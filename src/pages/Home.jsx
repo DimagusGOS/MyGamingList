@@ -1,3 +1,10 @@
+import Search from "../components/Search";
+
 export default function Home() {
-    return <h1>This is the Home Page</h1>;
+    return (
+        <div>
+            <h1>Search for Games</h1>
+            <Search />
+        </div>
+    )
 }
