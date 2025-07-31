@@ -31,7 +31,6 @@ export default function Results() {
     } else {
         return (
             <div>
-                <h2>Games found with {name}</h2>
                 <GameList games={games} />
                 <a href="/"><button>Search for Other Games</button></a>
             </div>
