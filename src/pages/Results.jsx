@@ -15,7 +15,7 @@ export default function Results() {
             .then((data) => {
                 // console.log(data);
 
-                setGames(data.data);
+                setGames(data);
                 setTimeout(() => setIsLoading(false), 1000);
             });
     }, [name]);
@@ -27,7 +27,7 @@ export default function Results() {
         </div>
     )
     if (games.length === 0) {
-        return <NoResults from={name} />;
+        return <NoResults gameName={name} />;
     } else {
         return (
             <div>

@@ -4,7 +4,6 @@ import Search from "../components/Search"
 export default function Header() {
     return (
         <div>
-            <Navbar />
             <Search/>
         </div>
         

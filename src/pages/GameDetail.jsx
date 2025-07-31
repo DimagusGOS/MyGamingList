@@ -3,37 +3,36 @@ import {useParams} from 'react-router-dom';
 
 function GameDetail({token}) {
     const {id} = useParams();
-    const[flight, setFlight] = useState(null);
+    const[game, setGame] = useState(null);
 
     useEffect(() => {
-        const fetchFlight = async () => {
-            const api = import.meta.env.VITE_API_URL;
-            const res = await fetch(`${api}/flights/${id}`, {
+        const fetchGame = async () => {
+            const res = await fetch(`http://localhost:4000/flights/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                }
+                },
             });
 
             if (res.ok){
                 const data = await res.json();
-                setFlight(data);
+                setGame(data);
             } else {
-                alert('Unauthorized or flight not found');
+                alert('Unauthorized or game not found');
             }
         };
 
-        fetchFlight();
+        fetchGame();
     }, [id, token]);
 
-    if (!flight)
-        return <p>Loading flight details...</p>
+    if (!game)
+        return <p>Loading game details...</p>
 
     return (
         <div>
-            <h2>{flight.name || 'Flight Detail'}</h2>
-            <p><strong>From:</strong> {flight.from}</p>
-            <p><strong>To:</strong> {flight.to}</p>
-            <p><strong>Price:</strong> {flight.price}</p>
+            <h2>{game.name || 'game Detail'}</h2>
+            <p><strong>genres:</strong> {game.genres}</p>
+            <p><strong>platform:</strong> {game.platform}</p>
+            <p><strong>score:</strong> {game.review}</p>
         </div>
     );
 }
