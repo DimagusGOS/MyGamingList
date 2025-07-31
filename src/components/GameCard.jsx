@@ -1,4 +1,4 @@
-export default function UpcomingCard({ game, description, image}) {
+export default function GameCard({ game, description, image}) {
   return (
     <div className="flex my-5">
       <img src={image} alt={game} className="w-full h-48 object-cover" />

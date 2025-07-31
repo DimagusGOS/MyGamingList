@@ -1,23 +1,24 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import NoResults from './NoResults';
+import GameList from '../components/GameList';
 
 export default function Results() {
     const [searchParams] = useSearchParams();
-    const gameName = searchParams.get('gameName');
+    const name = searchParams.get('name');
     const [games, setGames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/results?gameName=${gameName}`)
+        fetch(`http://localhost:4000/games?name=${name}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
 
-                setGames(data);
+                setGames(data.data);
                 setTimeout(() => setIsLoading(false), 1000);
             });
-    }, [gameName]);
+    }, [name]);
 
     if (isLoading) 
         return (
@@ -26,12 +27,12 @@ export default function Results() {
         </div>
     )
     if (games.length === 0) {
-        return <NoResults from={gameName} />;
+        return <NoResults from={name} />;
     } else {
         return (
             <div>
-                <h2>Games found witdh {gameName}</h2>
-                <FlightList games={games} />
+                <h2>Games found with {name}</h2>
+                <GameList games={games} />
                 <a href="/"><button>Search for Other Games</button></a>
             </div>
         );
