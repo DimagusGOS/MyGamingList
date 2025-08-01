@@ -29,8 +29,8 @@ export default function Navbar({token, onLogout}) {
             ) : (
                 <>
                     <div>
-                        <Link to="/profile" className="nav-link">Profile</Link>
-                        <button onClick={handleLogout} className="nav-button">Logout</button>
+                        <Link to="/profile" className="nav-link focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900">Profile</Link>
+                        <button onClick={handleLogout} className="nav-link focus:outline-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900">Logout</button>
                     </div>
                 </>   
             )}
