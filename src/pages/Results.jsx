@@ -7,7 +7,7 @@ export default function Results() {
     const [searchParams] = useSearchParams();
     const name = searchParams.get('name');
     const [games, setGames] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const api = import.meta.env.VITE_API_URL;

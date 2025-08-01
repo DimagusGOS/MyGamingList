@@ -6,7 +6,7 @@ export default function GameList({ games }) {
     return (
         <div className='flex flex-col items-center'>
             {games.map((game) => (
-                <GameCard key={game.id} game={game.name} image={image} genres={game.genres.join(', ')}/>
+                <GameCard key={game.id} game={game.name} image={game.image} genres={game.genres.join(', ')} platforms={game.platforms.join(', ')}/>
             ))}
         </div>
     );
