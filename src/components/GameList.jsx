@@ -1,5 +1,5 @@
 import GameCard from './GameCard';
-import image from '../assets/sample.jpg'
+// import image from '../assets/sample.jpg'
 
 export default function GameList({ games }) {
     // console.log(games);

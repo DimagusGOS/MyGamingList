@@ -1,15 +1,47 @@
 import PopularCard from './PopularCard';
-import image1 from "../assets/sample.jpg";
+import { useEffect, useState } from 'react';
 
 export default function PopularTitles() {
+
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    const api = import.meta.env.VITE_API_URL;
+    const fetchPopularGames = async () => {
+      try {
+        const res = await fetch(`${api}/games/popular`);
+        if (!res.ok) throw new Error('Failed to fetch popular games');
+
+        const data = await res.json();
+        setGames(data);
+        console.log(data);
+      } catch (err) {
+        console.error('Error fetching popular games:', err.message);
+      }
+    };
+
+    // console.log('API URL:', api);
+
+    fetchPopularGames();
+  }, []);
+
   return (
     <section>
       <h2 className="text-3xl font-bold mb-6 flex ">Popular Titles</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <PopularCard title="Game 1" text="Body text for whatever..." image={image1} />
-        <PopularCard title="Game 2" text="Body text to expand..." image={image1} />
-        <PopularCard title="Game 3" text="Body text to share..." image={image1} />
-      </div>
+      {games.length >= 3 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {games.slice(0, 3).map((game, index) => (
+            <PopularCard
+              key={index}
+              title={game.name}
+              platforms={game.platforms.join(', ')}
+              image={game.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-gray-500">Loading popular games...</p>
+      )}
     </section>
   );
 }
