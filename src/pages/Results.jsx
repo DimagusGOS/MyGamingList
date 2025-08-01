@@ -10,7 +10,8 @@ export default function Results() {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/games?name=${name}`)
+        const api = import.meta.env.VITE_API_URL;
+        fetch(`${api}/games?name=${name}`)
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);

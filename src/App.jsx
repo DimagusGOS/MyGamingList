@@ -1,7 +1,7 @@
 import './App.css';
 import {useState} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
-import Home from './pages/home';
+import Home from './pages/Home';
 import Results from './pages/Results';
 import Signup from './pages/Signup';
 import Login from './pages/Login';

@@ -9,7 +9,8 @@ function Login({onAuth, setMessage}){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('http://localhost:4000/api/auth/login', {
+        const api = import.meta.env.VITE_API_URL;
+        const res = await fetch(`${api}/api/auth/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username, password}),
@@ -90,13 +91,6 @@ function Login({onAuth, setMessage}){
                             </button>
                         </div>
                     </form>
-
-                    <p className="mt-10 text-center text-sm/6 text-gray-500">
-                        Not a member?{' '}
-                        <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                            Start a 14 day free trial
-                        </a>
-                    </p>
                 </div>
             </div>
         </>

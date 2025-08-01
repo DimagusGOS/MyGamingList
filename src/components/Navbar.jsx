@@ -12,7 +12,9 @@ export default function Navbar({token, onLogout}) {
 
     return (
         <nav className="navbar flex justify-between">
-            <Link to="/" className="nav-link font-[Bitcount_Prop_Double] text-xl">My Gaming List</Link>
+            <Link to="/" className="nav-link font-[Bitcount_Prop_Double] text-xl flex">
+                <img src="./controller.svg" alt="logo" className='w-5 mx-2' /> My Gaming List
+            </Link>
             {!token ? (
                 <>
                     <div>

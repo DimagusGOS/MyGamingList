@@ -4,7 +4,8 @@ function Profile({token}) {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/auth/me', {
+        const api = import.meta.env.VITE_API_URL;
+        fetch(`${api}/api/auth/me`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
